@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Car Price Prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="icon" href="car.jpeg" type="image/x-icon">
+  <style>
+    body {
+      background-size: cover;
+      background-position: center;
+      font-family: 'Arimo', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .login {
+      background-color: #fff;
+      border-radius: 4px;
+      width: 300px;
+      margin: 0 auto;
+      padding: 20px;
+      margin-top: 100px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 24px;
+    }
+
+    form input {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-family: 'Hind', sans-serif;
+      font-size: 14px;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-family: 'Hind', sans-serif;
+      font-size: 14px;
+    }
+
+    button {
+      background-color: #0074cc;
+      color: #fff;
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Pacifico', cursive;
+      font-size: 20px;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #005aa7;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login">
+    <h1>Car Price Prediction</h1>
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict_car_price')}}" method="post">
+
+      <input type="text" name="Present_Price" placeholder="Present Price" required="required" /><br>
+      <input type="text" name="Kms_Driven" placeholder="Kms Driven" required="required" /><br>
+      <input type="text" name="n_year" placeholder="Year" required="required" /><br>
+
+
+      <select name="Fuel_Type">
+        <option value="Petrol">Petrol</option>
+        <option value="Diesel">Diesel</option>
+      </select><br>
+
+      <select name="Seller_Type">
+        <option value="Dealer">Dealer</option>
+        <option value="Individual">Individual</option>
+      </select><br>
+
+      <select name="Transmission">
+        <option value="Automatic">Automatic</option>
+        <option value="Manual">Manual</option>
+      </select><br>
+
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+  </div>
+  {{result}}
+</body>
+
+</html>
